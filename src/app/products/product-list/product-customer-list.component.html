@@ -1,0 +1,26 @@
+<p>
+  customer-list works!
+</p>
+<section>
+  <button (click)="getHerokuData()">Get data from server</button>
+</section>
+<section>
+  <ol>
+    <li *ngFor="let product of products">
+      {{product.request}}
+      <a class="makeItLookLikeLink" (click)="getProductDetails(product.url)">{{product.url}}</a>
+    </li>
+  </ol>
+</section>
+<h2 *ngIf="product">Clicked Product's details are below</h2>
+<ul *ngIf="product">
+  <li>
+    Id: {{product._id}}
+  </li>
+  <li>
+    Name: {{product.name}}
+  </li>
+  <li>
+    Price: {{product.price}}
+  </li>
+</ul>

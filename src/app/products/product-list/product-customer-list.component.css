@@ -1,0 +1,16 @@
+.makeItLookLikeLink {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:visited {
+  color: pink;
+}
+
+a:active {
+  background-color: yellow;
+}
+
+a:link {
+  color: green;
+}
