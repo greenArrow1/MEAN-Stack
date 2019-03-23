@@ -8,8 +8,12 @@ export class MetaDataOfProducts {
     url: string;
 }
 
-export class Product{
+export class Product {
     id: string;
     price: number;
     name: string;
+}
+export class AddedProduct {
+    createdProduct: Product;
+    message: string;
 }

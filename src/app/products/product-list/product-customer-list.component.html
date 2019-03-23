@@ -1,5 +1,5 @@
 <p>
-  customer-list works!
+  Product List
 </p>
 <section>
   <button (click)="getHerokuData()">Get data from server</button>
@@ -12,15 +12,41 @@
     </li>
   </ol>
 </section>
-<h2 *ngIf="product">Clicked Product's details are below</h2>
-<ul *ngIf="product">
-  <li>
-    Id: {{product._id}}
-  </li>
-  <li>
-    Name: {{product.name}}
-  </li>
-  <li>
-    Price: {{product.price}}
-  </li>
-</ul>
+<section *ngIf="product">
+  <h2>Clicked Product's details are below</h2>
+  <ul>
+    <li>
+      Id: {{product._id}}
+    </li>
+    <li>
+      Name: {{product.name}}
+    </li>
+    <li>
+      Price: {{product.price}}
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Add Product</h2>
+  <form #myform="ngForm" (ngSubmit)="postProduct(myform)">
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" [(ngModel)]="name"> &nbsp;
+    <label for="price">Price</label>
+    <input id="price" type="number" name="price" [(ngModel)]="price">
+    <input id="submit" type="submit" value="Add Product">
+  </form>
+  <h2 *ngIf="addedProducts.length">
+    Added Products
+  </h2>
+  <ol *ngFor="let product of addedProducts">
+    <li>
+      Id: {{product._id}}
+    </li>
+    <li>
+      Name: {{product.name}}
+    </li>
+    <li>
+      Price: {{product.price}}
+    </li>
+  </ol>
+</section>

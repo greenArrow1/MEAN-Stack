@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Products, Product } from './models/productModel';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Products, Product, AddedProduct } from './models/productModel';
+import { catchError, retry } from 'rxjs/operators';
+import { ErrorHandlerServiceConfigService } from './error-handler-service-config.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customer-list',
@@ -9,9 +12,10 @@ import { Products, Product } from './models/productModel';
 })
 export class ProductListComponent implements OnInit {
   count: number;
-  products: Array<any>;
+  products: Array<any> = [];
   product: Product;
-  constructor(private httpClinet: HttpClient) { }
+  addedProducts: Array<Product> = [];
+  constructor(private httpClinet: HttpClient, private errorHandler: ErrorHandlerServiceConfigService) { }
 
   ngOnInit() {
 
@@ -27,5 +31,19 @@ export class ProductListComponent implements OnInit {
       this.product = product;
     });
   }
-
+  postProduct(formData: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'my-auth-token'
+      })
+    };
+    console.log(formData.value);
+    return this.httpClinet.post('https://my-node-server-one.herokuapp.com/products', formData.value, httpOptions)
+      .subscribe((successData: AddedProduct) => {
+        this.addedProducts.push(successData.createdProduct);
+      }, (error) => {
+        console.log(error);
+      });
+  }
 }
