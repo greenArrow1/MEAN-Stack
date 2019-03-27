@@ -14,3 +14,11 @@ a:active {
 a:link {
   color: green;
 }
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://www.nsrcel.org/wp-content/uploads/2018/01/product.png');
+  background-size: cover;
+}
