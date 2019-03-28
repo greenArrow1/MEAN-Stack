@@ -17,3 +17,14 @@ export class AddedProduct {
     createdProduct: Product;
     message: string;
 }
+// export interface Tile {
+//     color: string;
+//     cols: number;
+//     rows: number;
+//     text: string;
+//   }
+export interface ExampleTab {
+    label: string;
+    content: string;
+    path?: string;
+}

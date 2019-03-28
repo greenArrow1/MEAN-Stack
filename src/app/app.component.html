@@ -1,9 +1,23 @@
 <h1>
-  {{title}}
+  Welcome to Inventory module.
 </h1>
+<section>
+  <div class="sidebar">
+    <button mat-raised-button color="accent" routerLink="/products">Products</button>
+    <button mat-raised-button color="accent" routerLink="/orders">Orders</button>
+    <button mat-raised-button color="accent" routerLink="">Home</button>
+  </div>
 
-<button routerLink="/products">Products</button>
-<button routerLink="/orders">Orders</button>
-<button routerLink="">Home</button>
-
-<router-outlet></router-outlet>
+  <!-- <mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list> -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</section>

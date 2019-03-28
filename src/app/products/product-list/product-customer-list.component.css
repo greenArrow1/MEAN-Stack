@@ -15,10 +15,32 @@ a:link {
   color: green;
 }
 .example-card {
-  max-width: 400px;
+  max-width: 280px;
 }
 
 .example-header-image {
   background-image: url('https://www.nsrcel.org/wp-content/uploads/2018/01/product.png');
   background-size: cover;
+}
+.example-h2 {
+  margin: 10px;
+}
+
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
 }

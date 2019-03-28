@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CustomMatertialModuleModule } from './custom-matertial-module/custom-matertial-module.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,7 +18,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CustomMatertialModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

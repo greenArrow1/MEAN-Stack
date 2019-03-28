@@ -1,0 +1,15 @@
+
+.sidebar{
+  width: 20%;
+  display: inline-grid;
+  vertical-align: top;
+  margin-right: 8px;
+
+}
+.content{
+  width: 75%;
+  display: inline-block;
+}
+button{
+margin-top:4px;
+}

@@ -1,0 +1,59 @@
+<section>
+  <h2>Add Product</h2>
+  <form class="example-form" #myform="ngForm" (ngSubmit)="postProduct(myform)">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Product Name" id="name" type="text" name="name" [(ngModel)]="name">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Product Price" id="price" type="number" name="price" [(ngModel)]="price">
+    </mat-form-field>
+    <button mat-raised-button color="accent" id="submit" type="submit">Add Product</button>
+  </form>
+  <!-- <form #myform="ngForm" (ngSubmit)="postProduct(myform)">
+    <label for="name">Name</label>
+    <input id="name" type="text" name="name" [(ngModel)]="name"> &nbsp;
+    <label for="price">Price</label>
+    <input id="price" type="number" name="price" [(ngModel)]="price">
+    <input id="submit" type="submit" value="Add Product">
+  </form> -->
+  <h2 *ngIf="addedProducts.length">
+    Added Products
+  </h2>
+  <!-- <ol *ngFor="let product of addedProducts">
+    <li>
+      Id: {{product._id}}
+    </li>
+    <li>
+      Name: {{product.name}}
+    </li>
+    <li>
+      Price: {{product.price}}
+    </li>
+  </ol> -->
+  <mat-card class="example-card" *ngIf="addedProducts.length">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Product Details</mat-card-title>
+      <mat-card-subtitle>New Product</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://www.nsrcel.org/wp-content/uploads/2018/01/product.png" alt="">
+    <mat-card-content>
+      <ol *ngFor="let product of addedProducts">
+        <li>
+          Id: {{product._id}}
+        </li>
+        <li>
+          Name: {{product.name}}
+        </li>
+        <li>
+          Price: {{product.price}}
+        </li>
+      </ol>
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button> -->
+    </mat-card-actions>
+  </mat-card>
+  <a mat-raised-button routerLink="product" color="accent">Back</a>
+</section>

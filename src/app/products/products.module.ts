@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CustomersRoutingModule } from './products-routing.module';
 import { ProductListComponent } from './product-list/product-customer-list.component';
 import { CustomMatertialModuleModule } from '../custom-matertial-module/custom-matertial-module.module';
+import { ManageProductComponent } from './manage-product/manage-product.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { CustomMatertialModuleModule } from '../custom-matertial-module/custom-m
     FormsModule,
     CustomMatertialModuleModule
   ],
-  declarations: [ProductListComponent]
+  declarations: [ProductListComponent, ManageProductComponent]
 })
 export class ProductsModule { }
