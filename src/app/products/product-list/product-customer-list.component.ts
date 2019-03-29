@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Products, Product, AddedProduct, ExampleTab } from './models/productModel';
+import { Products, Product, AddedProduct, ExampleTab, MetaDataOfProducts, DeletedData } from './models/productModel';
 import { catchError, retry, count } from 'rxjs/operators';
 import { ErrorHandlerServiceConfigService } from './error-handler-service-config.service';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subject } from 'rxjs';
 import { Route, Router } from '@angular/router';
 import { OrderListComponent } from 'src/app/orders/order-list/order-list.component';
 
@@ -14,8 +14,9 @@ import { OrderListComponent } from 'src/app/orders/order-list/order-list.compone
 })
 export class ProductListComponent implements OnInit {
   count: number;
-  products: Array<any> = [];
+  products: Array<MetaDataOfProducts>;
   product: Product;
+  selectedURL: string;
   // addedProducts: Array<Product> = [];
   // material progressbar
   color = 'primary';
@@ -39,22 +40,22 @@ export class ProductListComponent implements OnInit {
     });
     this.navLinks = [
       {
-          label: 'TabTest1',
-          link: 'product',
-          index: 0
+        label: 'All Products',
+        link: 'product',
+        index: 0
       }, {
-          label: 'Tab Test2',
-          link: 'addproduct',
-          index: 1
+        label: 'Add Product',
+        link: 'addproduct',
+        index: 1
       }
-  ];
+    ];
   }
 
   ngOnInit() {
     this.count = 0;
     this.router.events.subscribe((res) => {
       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
-  });
+    });
   }
   getHerokuData() {
     this.value = 75;
@@ -67,6 +68,7 @@ export class ProductListComponent implements OnInit {
     });
   }
   getProductDetails(url) {
+    this.selectedURL = url;
     return this.httpClinet.get(url).subscribe((product: Product) => {
       this.product = product;
     });
@@ -86,4 +88,15 @@ export class ProductListComponent implements OnInit {
   //       console.log(error);
   //     });
   // }
+  delete(productId: string) {
+    this.httpClinet.delete(`https://my-node-server-one.herokuapp.com/products/${productId}`).subscribe((success: DeletedData) => {
+      console.log(success);
+      const index = this.products.findIndex(x => x.url === this.selectedURL);
+      if (index) {
+        this.products.splice(index, 1);
+        this.product = null;
+        console.log('Popped out index', index);
+      }
+    });
+  }
 }

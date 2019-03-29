@@ -28,3 +28,7 @@ export interface ExampleTab {
     content: string;
     path?: string;
 }
+export interface DeletedData {
+    id: string;
+    message: string;
+}
